@@ -23,26 +23,26 @@ export default function Home() {
       <ActionItems>
         {/* Header */}
         <Header>
-        <Custologo src='./components/NAR.png' alt='CustoImg'/>
+        <Custologo src='https://fixedopsdigital.s3.amazonaws.com/dealers/ford/sunset-ford-st-louis/vehicles/Lifted-Trucks-min.jpg' alt='CustoImg'/>
           <Profile>
             <Name>Money Man</Name>
-            <UserImage src='./components/terrorist.jpeg'/>
+            <UserImage src='https://heavy.com/wp-content/uploads/2015/02/terrorist.jpg?resize=225'/>
           </Profile>
         </Header>
         {/* Action Buttons */}
         <ActionButtons>
           <Link href='/search'>
             <ActionButton>
-              <ActionButtonImage src="./components/car.jpeg" />
+              <ActionButtonImage src="https://th.bing.com/th/id/OIP.jZo3YF388XckCIMqIybqXAHaEK?rs=1&pid=ImgDetMain" />
                 Ride
             </ActionButton>
           </Link>   
-          <ActionButton>
-            <ActionButtonImage src="./components/car.jpeg" />
+        <ActionButton>
+            <ActionButtonImage src="https://th.bing.com/th/id/OIP.npvwderQwO7_FUpPDfr9yAHaFC?rs=1&pid=ImgDetMain" />
               two wheels
           </ActionButton>
           <ActionButton>
-            <ActionButtonImage src="./components/reserve.jpeg" />
+            <ActionButtonImage src="https://icon-library.com/images/reservation-icon-png/reservation-icon-png-29.jpg" />
             reserve
           </ActionButton>
         </ActionButtons>
