@@ -1,42 +1,72 @@
 import Link from 'next/link'
 import React from 'react'
 import tw from 'tailwind-styled-components'
+import { useState } from 'react'
+
 
 const Search = () => {
+
+  const [pickup, setPickup] = useState("");
+  const [dropoff, setDropoff] = useState("");
+
   return (
     <Wrapper>
       {/* Button Container */}
       <ButtonContainer>
         <Link href='/'>
-        <BackButton src='https://th.bing.com/th/id/OIP.fU4tL3q9XTZ0q2H3LUD5HQAAAA?rs=1&pid=ImgDetMain'/>
+          <BackButton src='https://th.bing.com/th/id/OIP.fU4tL3q9XTZ0q2H3LUD5HQAAAA?rs=1&pid=ImgDetMain' />
         </Link>
       </ButtonContainer>
       {/* Input Container */}
       <InputContainer>
-      <FromTwoIcons>
-        <Circle src='https://th.bing.com/th/id/R.c9af8efe164f75b2d3aaebf5534892b0?rik=Kgt3pUp0woXM3A&riu=http%3a%2f%2fpluspng.com%2fimg-png%2fcircle-png-circle-png-hd-1600.png&ehk=puEtd%2fOecJlU5MP64BesMRP9JnTIBa%2f1ChZYvpVN7Xc%3d&risl=&pid=ImgRaw&r=0' alt='screw it'/>
-        <Line src='https://clipground.com/images/vertical-line-image-png-4.png'/>
-        <Square src='https://pngimg.com/uploads/square/square_PNG46.png'/>
-      </FromTwoIcons>
-      <InputBoxes>
-        <Input placeholder='Enter pick up location'/>
-        <Input placeholder='Where to?'/>
-      </InputBoxes>
-      <PluseIcon src='https://pngimg.com/uploads/plus/plus_PNG37.png'/>
+        <FromTwoIcons>
+          <Circle src='https://th.bing.com/th/id/R.c9af8efe164f75b2d3aaebf5534892b0?rik=Kgt3pUp0woXM3A&riu=http%3a%2f%2fpluspng.com%2fimg-png%2fcircle-png-circle-png-hd-1600.png&ehk=puEtd%2fOecJlU5MP64BesMRP9JnTIBa%2f1ChZYvpVN7Xc%3d&risl=&pid=ImgRaw&r=0' alt='screw it' />
+          <Line src='https://clipground.com/images/vertical-line-image-png-4.png' />
+          <Square src='https://pngimg.com/uploads/square/square_PNG46.png' />
+        </FromTwoIcons>
+        <InputBoxes>
+          <Input placeholder='Enter pick up location'
+            value={pickup}
+            onChange={(e) => setPickup(e.target.value)}
+          />
+          <Input placeholder='Where to?'
+            value={dropoff}
+            onChange={(e) => setDropoff(e.target.value)}
+          />
+        </InputBoxes>
+        <PluseIcon src='https://pngimg.com/uploads/plus/plus_PNG37.png'/>
       </InputContainer>
-      {/* Saved Places*/}
-      {/* Confirmed location */}
-      <ConfimButtonContainer>
-        Confirm Locations
-      </ConfimButtonContainer>
+      <SavedPlaces>
+        <StarIcon src='https://static.vecteezy.com/system/resources/previews/013/743/901/original/golden-star-icon-png.png'/>
+          Saved Places
+      </SavedPlaces>
 
-      </Wrapper>
+
+      {/* Confirmed location */}
+      <Link href={{
+        pathname: '/confirm',
+        query: {
+          pickup: pickup,
+          dropoff: dropoff
+        }
+      }}>
+        <ConfimButtonContainer>
+          Confirm Locations
+        </ConfimButtonContainer>
+      </Link>
+
+    </Wrapper>
   )
 }
 
 export default Search
 
-const ConfimButtonContainer=tw.div`
+const StarIcon = tw.img`
+w-10 h-10 bg-gray-200 rounded-full ml-3
+`
+const SavedPlaces = tw.div`
+`
+const ConfimButtonContainer = tw.div`
 bg-black text-white text-center mt-2 mx-4 py-3 px-4 text-2xl cursor-pointer 
 `
 const PluseIcon = tw.img`

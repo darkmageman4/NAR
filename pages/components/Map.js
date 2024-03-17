@@ -14,20 +14,31 @@ const Map = (props) => {
       center: [-92.045303, 30.291835], // starting position [lng, lat]
       zoom: 3 // starting zoom
     });
-    addToMap(map)
-  })
+    if (props.pickupCoordinates) {
+      addToMap(map, props.pickupCoordinates)
+    }
+    if (props.dropoffCoordinates) {
+      addToMap(map, props.dropoffCoordinates)
+    }
+    if (props.pickupCoordinates && props.dropoffCoordinates) {
+      map.fitBounds([
+        props.dropoffCoordinates,
+        props.pickupCoordinates,
+      ],
+        {
+          padding: 60
+        }
+      )
+    }
+
+  }, [props.pickupCoordinates, props.dropoffCoordinates])
 
   // Create a default Marker and add it to the map.
-  const addToMap = (map) => {
+  const addToMap = (map, coordinates) => {
     const marker1 = new mapboxgl.Marker({ color: 'red', rotation: 90 })
-      .setLngLat([12.554729, 55.70651])
+      .setLngLat(coordinates)
       .addTo(map);
   }
-
-  useEffect(() => {
-    console.log(props.pickupCoordinates)
-    console.log(props.dropoffCoordinates)
-  }, [])
 
   return (
     <Wrapper id='map' className='marker1'></Wrapper>
